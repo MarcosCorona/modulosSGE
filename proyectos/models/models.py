@@ -16,6 +16,8 @@
 #     def _value_pc(self):
 #         for record in self:
 #             record.value2 = float(record.value) / 100
+import logging
+
 
 
 from odoo import models, fields, api, exceptions
@@ -54,11 +56,19 @@ class empleado(models.Model):
         for empleado in self:
             empleado.edad = relativedelta(hoy, empleado.fechaNacimiento).years
 
+    @api.constrains('fechaNacimiento')
+    def _checkEdad(self):
+        _logger = logging.getLogger(__name__)
+        _logger.warning("CHECK EDAD" )
+        for empleado in self:
+            if (empleado.edad < 18):
+                raise exceptions.ValidationError("El empleado no puede ser menor de edad")
+
     @api.constrains('dniEmpleado')
     def _checkDNI(self):
         for empleado in self:
             if (len(empleado.dniEmpleado) > 9):
-                raise exceptions.ValidationError("El DNI no puede tener mas 9 caracteres")
+                raise exceptions.ValidationError("El DNI no puede tener mas 9 caracteres!!")
             if (len(empleado.dniEmpleado) < 9):
                 raise exceptions.ValidationError("El DNI no puede tener menos 9 caracteres")
 
@@ -77,7 +87,8 @@ class proyecto(models.Model):
     
     #Relacion entre tablas
     empleado_ids = fields.Many2many('proyectos.empleado', string='Empleados')
-    
+
+    #Verificar fechas
     @api.constrains('fechaFin')
     def _checkFechaFin(self):
         for proyecto in self:
