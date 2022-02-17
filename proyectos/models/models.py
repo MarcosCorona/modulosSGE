@@ -54,6 +54,12 @@ class empleado(models.Model):
         for empleado in self:
             empleado.edad = relativedelta(hoy, empleado.fechaNacimiento).years
 
+    @api.constrains('fechaNacimiento')
+    def _checkEdad(self):
+        for empleado in self:
+            if (empleado.edad < 18):
+                raise exceptions.ValidationError("El empleado no puede ser menor de edad")
+
     @api.constrains('dniEmpleado')
     def _checkDNI(self):
         for empleado in self:
