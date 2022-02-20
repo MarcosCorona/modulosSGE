@@ -14,14 +14,14 @@
             <t t-foreach="docs" t-as="departamento">
                 <t t-call="web.external_layout">
                     <div class="page">
-<<<<<<< HEAD
+
                         <h2 t-field="departamento.nombreDpto"/>
                         <p>Nombre del departamento: <span t-field="departamento.nombreDpto"/></p>
-=======
+
                         <h2>INFORME</h2>
                         <h3 t-field="departamento.nombreDpto"/>
 
->>>>>>> 3b3c75924cfc3eb482177f6cdcaf7b3a8ee5dfa8
+
                         <table class="table table-sm o_main_table">
                             <thead>
                                 <tr>
@@ -33,10 +33,7 @@
                                     <th>Telefono</th>
                                 </tr>
                             </thead>
-<<<<<<< HEAD
-=======
 
->>>>>>> 3b3c75924cfc3eb482177f6cdcaf7b3a8ee5dfa8
                             <tbody>
                                 <t t-foreach="departamento.empleado_id" t-as="empleado">
                                     <tr>
@@ -58,8 +55,6 @@
                                         <td>
                                             <span t-field="empleado.telefonoEmpleado"/>
                                         </td>
-<<<<<<< HEAD
-
                                     </tr>
                                 </t>
                             </tbody>
@@ -69,25 +64,5 @@
             </t>
         </t>
     </template>
-
-
-=======
-                                    </tr>
-
-                                </t>
-                            </tbody>
-
-                        </table>
-
-                    </div>
-                </t>
-            </t>
-
-        </t>
-
-    </template>
->>>>>>> 3b3c75924cfc3eb482177f6cdcaf7b3a8ee5dfa8
-
-
 
 </odoo>
