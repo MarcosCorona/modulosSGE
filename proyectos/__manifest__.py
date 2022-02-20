@@ -29,6 +29,7 @@
         'views/views.xml',
         'views/templates.xml',
         'report/proyecto_idDpto_report.xml',
+        'report/proyecto_idProyecto_report.xml',
         #'data/proyectos_data.xml',
     ],
     # only loaded in demonstration mode
