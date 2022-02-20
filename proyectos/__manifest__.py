@@ -29,7 +29,10 @@
         'views/views.xml',
         'views/templates.xml',
         'report/proyecto_idDpto_report.xml',
+<<<<<<< HEAD
         'report/proyecto_idProyecto_report.xml',
+=======
+>>>>>>> 3b3c75924cfc3eb482177f6cdcaf7b3a8ee5dfa8
         #'data/proyectos_data.xml',
     ],
     # only loaded in demonstration mode

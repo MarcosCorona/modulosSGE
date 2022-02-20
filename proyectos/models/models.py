@@ -58,8 +58,11 @@ class empleado(models.Model):
 
     @api.constrains('fechaNacimiento')
     def _checkEdad(self):
+<<<<<<< HEAD
         _logger = logging.getLogger(__name__)
         _logger.warning("CHECK EDAD" )
+=======
+>>>>>>> 3b3c75924cfc3eb482177f6cdcaf7b3a8ee5dfa8
         for empleado in self:
             if (empleado.edad < 18):
                 raise exceptions.ValidationError("El empleado no puede ser menor de edad")
