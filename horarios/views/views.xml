@@ -1,0 +1,105 @@
+<odoo>
+  <data>
+
+    <!-- VISTA HORARIO TREE -->
+    <record model="ir.ui.view" id="horarios.horario_list_view">
+      <field name="name">horarios.horario.view.tree</field>
+      <field name="model">horarios.horario</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombreHorario"/>
+          <field name="lunesEntrada"/>
+          <field name="lunesSalida"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- VISTAS FORMULARIOS -->
+    <record model="ir.ui.view" id="horarios.horario_view">
+      <field name="name">horarios.horario.view.tree</field>
+      <field name="model">horarios.horario</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div class="oe_button_box">
+              <BUTTONS/>
+            </div>
+            <group>
+              <group>
+                <h1>VISTA HORARIO</h1>
+              </group>
+            </group>
+            <notebook>
+              <page string="Página 1">
+                <group>
+                  <field name="nombreHorario"/>
+                </group>
+                <group>
+                  <field name="empleado_id" />
+                </group>
+                <group col="2">
+                  <field name="lunesEntrada" style="width:10%%"/>
+                  <field name="lunesSalida" style="width:10%%"/>
+                </group>
+                <group col="2">
+                  <field name="martesEntrada" style="width:10%%"/>
+                  <field name="martesSalida" style="width:10%%"/>
+                </group>
+                <group col="2">
+                  <field name="miercolesEntrada" style="width:10%%"/>
+                  <field name="miercolesSalida" style="width:10%%"/>
+                </group>
+                <group col="2">
+                  <field name="juevesEntrada" style="width:10%%"/>
+                  <field name="juevesSalida" style="width:10%%"/>
+                </group>
+                <group col="2">
+                  <field name="viernesEntrada" style="width:10%%"/>
+                  <field name="viernesSalida" style="width:10%%"/>
+                </group>
+              </page>
+              <page string="Página 2">
+                <group>
+                  <CONTENT/>
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- VISTA BAJAS TREE -->
+    <record model="ir.ui.view" id="horarios.bajas_list_view">
+      <field name="name">horarios.bajas.view.tree</field>
+      <field name="model">horarios.bajas</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="fechaBaja"/>
+          <field name="motivoBaja"/>
+          <field name="empleado_id"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- DEFINICION DE MENUS-->
+    <record model="ir.actions.act_window" id="horarios.horario_action_window">
+      <field name="name">Horario</field>
+      <field name="res_model">horarios.horario</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="horarios.bajas_action_window">
+      <field name="name">Bajas</field>
+      <field name="res_model">horarios.bajas</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Gestion" id="horarios.menu_root"/>
+
+    <menuitem name="Horario" id="horarios.horario_menu" parent="horarios.menu_root" action="horarios.horario_action_window"/>
+    <menuitem name="Bajas" id="horarios.bajas_menu" parent="horarios.menu_root" action="horarios.bajas_action_window"/>
+
+  </data>
+</odoo>
