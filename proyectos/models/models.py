@@ -33,6 +33,12 @@ class departamento(models.Model):
     #Relacion entre tablas
     empleado_id = fields.One2many('proyectos.empleado','departamento_id', string='Departamento')
 
+    def name_get(self):
+        resultados = []
+        for dpto in self:
+            resultados.append((dpto.id, dpto.nombreDpto))
+        return resultados
+
 class empleado(models.Model):
     _name = 'proyectos.empleado'
     _description = 'Define los atributos de un empleado'
@@ -43,10 +49,19 @@ class empleado(models.Model):
     fechaNacimiento = fields.Date(string='Fecha Nacimiento', required=True, default = fields.date.today())
     direccionEmpleado = fields.Char(string='Direccion')
     telefonoEmpleado = fields.Char(string='Telefono')
-    edad = fields.Integer('Edad', compute='_getEdad')
+
     #Relacion de tablas
     departamento_id = fields.Many2one('proyectos.departamento', string='Departamentos')
     proyecto_ids = fields.Many2many('proyectos.proyecto', string='Proyectos')
+    edad = fields.Integer('Edad', compute='_getEdad')
+    horario_id = fields.Many2one('horarios.horario', string="Horario")
+    baja_id = fields.Many2one('horarios.bajas', 'empleado_id')
+
+    def name_get(self):
+        resultados = []
+        for empleado in self:
+            resultados.append((empleado.id, empleado.nombreEmpleado))
+        return resultados
 
     @api.depends('fechaNacimiento')
     def _getEdad(self):
